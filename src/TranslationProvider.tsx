@@ -96,8 +96,32 @@ const TranslationProvider = ({ children, originalLang }) => {
 
 
     const changeLanguage = (lang) => {
-        document.cookie = `googtrans=/auto/${lang}; path=/; domain=.${window.location.hostname}`;
-       window.location.reload();  // This reloads the page to reflect changes in translation.
+      
+        
+        
+        // deleteCookies
+        const hostname = window.location.hostname;
+        const parts = hostname.split('.');
+        const topLevel = parts.slice(-2).join('.'); 
+        const subDomains = parts.slice(0, -2); 
+        const domains = subDomains.reduce((acc, part, index) => {
+            const subDomain = acc[index - 1] ? acc[index - 1] + '.' + part : part + '.' + topLevel;
+            acc.push(subDomain);
+            return acc;
+        }, [topLevel]);
+        domains.forEach(domain => {
+            document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=.${domain}; path=/ `;
+           // setTimeout(()=>{},500)
+            console.log("deleted and set cookie for: ."+domain )
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=${domain}; path=/ `;
+        });
+        
+        
+        
+        document.cookie = `googtrans=/auto/${lang}; path=/;`;
+         console.log(" set cookie for: "+hostname )
+        
+        setTimeout(()=> {window.location.reload();},0)
     };
 
 
