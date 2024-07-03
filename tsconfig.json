@@ -1,0 +1,32 @@
+//{
+//  "files": [],
+//  "references": [
+//    {
+//      "path": "./tsconfig.app.json"
+//    },
+//    {
+//      "path": "./tsconfig.node.json"
+//    }
+//  ]
+//}
+
+{
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./dist",
+    "skipLibCheck": true,
+    "noEmitOnError": false,
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx"  // if you are using React
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
