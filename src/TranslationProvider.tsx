@@ -89,7 +89,7 @@ const TranslationProvider = ({ children, originalLang }) => {
 
         return () => {
 
-            document.head.removeChild(style);
+            //document.head.removeChild(style);
         };
     }, []);
 
